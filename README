@@ -15,4 +15,38 @@ Then, access the web application at http://localhost:8000/
 To log in as S (superuser), the database contains the following account:
 Username: 'admin', Password: 'admin' (without the quotes).
 
+src/
+Controllers/              Untrusted     Routes in the SnapSec monad
+    Common.hs                           Common functions 
+Frontend.hs                             Front-end (for anonymous users)
+    Login.hs                            Login/logout routes
+    Posts.hs                            Post CRUD actions
+    Users.hs                            User CRUD actions
+    DB/                       Trusted
+    Common.hs                           Common database definitions
+    Post.hs                             Post Entity instances
+    User.hs                             User Entity instances, various data definitions
+    SecLib/                   Trusted
+    DeclCombinators.hs                  Declassification combinators
+    DeclCombinatorsTypes.hs             Declassification datatypes
+    Declassification.hs                 Exports declassification functions and datatypes
+    Lattice.hs                          User level definitions
+    Sec.hs                              Secure pure values
+    SecLib.hs                           Module to be imported by untrusted code
+    SecLibTypes.hs                      Exports lattice types
+    SnapSec.hs                          Restricted Snap monad
+    Controllers.hs            Untrusted Convenience module to export all routes 
+    Forms.hs                  Untrusted Defines formlets
+    Utils.hs                  Untrusted Utility functions for untrusted code
+    DB.hs                     Trusted   Convenience module to export all entities
+    Glue.hs                   Trusted   Snap server code
+    Main.hs                   Trusted   Main server code, choosing which route to take
+    Policies.hs               Trusted   Contains declassification policies
+    Routes.hs                 Trusted   Part of the type-safe URLs and routing system
+    Routing.hs                Trusted   Part of the type-safe URLs and routing system
+    Server.hs                 Trusted   Server configuration code
+    UtilsTrusted.hs           Trusted   Utility functions for trusted code
+    static/                             Resource files e.g. images, CSS stylesheets
+    news.db                             Sqlite database, persistent data storage
+    lcookie.key                         Cookie encryption private key
 
