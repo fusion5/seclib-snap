@@ -1,0 +1,51 @@
+Name:                snap-blog
+Version:             0.1
+Synopsis:            Project Synopsis Here
+Description:         Project Description Here
+License:             AllRightsReserved
+Author:              Dragos Ionita
+Maintainer:          dragos.0x55@gmail.com
+Stability:           Experimental
+Category:            Web
+Build-type:          Simple
+Cabal-version:       >=1.2
+
+Executable hs-snap-branch
+  hs-source-dirs: src
+  main-is: Main.hs
+
+  Build-depends:
+    base        >= 4,
+    haskell98,
+    monads-fd   >= 0.1 && <0.2,
+    bytestring  >= 0.9.1 && <0.10,
+    snap-core   >= 0.2 && <0.3,
+    snap-server >= 0.2 && <0.3,
+    heist       >= 0.2.2 && <0.3,
+    hexpat      >= 0.18.2 && <0.19,
+    text        >= 0.11,
+    -- applicative-extras == 0.1.7,
+    xhtml-combinators,
+    unix,
+    text,
+    containers,
+    MonadCatchIO-transformers,
+    filepath    >= 1.1 && <1.2,
+    regular,
+    blaze-html  >= 0.2.3, 
+    formlets    >= 0.7.3,
+    convertible >= 1.0.9.1,
+    utf8-string >= 0.3.6,
+    HDBC == 2.2.3,
+    HDBC-sqlite3 == 2.3.0,
+    AES >= 0.2.7,
+    base64-bytestring,
+    cryptohash >= 0.6.1,
+    safe >= 0.3
+
+
+  if impl(ghc >= 6.12.0)
+    ghc-options: -threaded -Wall -fwarn-tabs -funbox-strict-fields -O2
+                 -fno-warn-unused-do-bind
+  else
+    ghc-options: -threaded -Wall -fwarn-tabs -funbox-strict-fields -O2

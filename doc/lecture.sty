@@ -1,0 +1,46 @@
+
+\ProvidesPackage{lecture}
+
+%-------------------------------------------------------------------------------
+% Packages
+
+% Allow for UTF-8 characters in text. With this, you can type ü instead of \"u.
+\usepackage[utf8]{inputenc}
+
+% Sync input and PDF output
+\usepackage{pdfsync}
+
+% Publication quality tables
+\usepackage{booktabs}
+
+% Support links with \url{}
+\usepackage{hyperref} 
+
+% Used for shadowblock environment amongst other things
+\usepackage{tikz} 
+
+% Absolute text box positioning
+\usepackage[absolute,overlay]{textpos}
+
+% Pazo math fonts
+\usepackage{mathpazo}
+
+%-------------------------------------------------------------------------------
+% Theme
+
+% Use the UU CS theme.
+\usetheme{uucs}
+
+%-------------------------------------------------------------------------------
+% Colors
+
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{lightred}{rgb}{1.0,0.8,0.8}
+
+%-------------------------------------------------------------------------------
+% beamer package configuration
+
+\setbeamercovered{transparent}
+\setbeamertemplate{blocks}[rounded][shadow=true] 
+\beamerboxesdeclarecolorscheme{goodpopup}{lightgrey}{white}
+

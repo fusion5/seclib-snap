@@ -1,0 +1,18 @@
+Computing Science (ex-Software Technology) Colloquium
+Dragos Ionita
+
+Unfortunately, the cabal file does not work due to 'Butterfy effect' problems
+http://cdsmith.wordpress.com/2011/01/17/the-butterfly-effect-in-cabal/
+
+To start the web application, install all required libraries, solve conflicts, 
+and then run:
+
+> ghci -i./src ./src/Main.hs
+
+After ghci starts successfully, call `main' to start the web server.
+
+Then, access the web application at http://localhost:8000/
+To log in as S (superuser), the database contains the following account:
+Username: 'admin', Password: 'admin' (without the quotes).
+
+

@@ -1,0 +1,163 @@
+\RequirePackage{color}
+\RequirePackage{graphicx}
+%\RequirePackage{mathpazo}
+%\RequirePackage{palatino}
+\RequirePackage{pgf}
+\RequirePackage{tikz}
+\RequirePackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% color
+
+\definecolor{uuxsilver}{rgb}{0.5,0.5,0.5}
+\definecolor{uuxorange}{cmyk}{0,0.25,0.9,0}
+\definecolor{uuxgreen}{cmyk}{1,0,0.75,0}
+\definecolor{uuxred}{cmyk}{0.2,1,0.9,0.1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% outer theme
+
+% (dimensions: 128mm * 96mm)
+
+\setbeamercolor{background canvas}{fg=black,bg=uuxsilver!20!white}
+\setbeamercolor{structure}{fg=uuxred}
+
+\newcommand{\frontmatter}{%
+  \setbeamertemplate{background}{%
+    \begin{tikzpicture}{0mm}{0mm}
+      \clip (0,0) rectangle (12.8,9.6);
+      \fill [uuxorange] (0,0) rectangle (12.8,9.6);    
+      \fill [uuxsilver] (45,10.5) circle (43.75cm); 
+      \fill [uuxred] (12.8,-23) circle (32.3cm);
+      \begin{scope}
+        \clip (12.8,-23) circle (32.3cm);
+        \fill [uuxsilver!20!white] (45,10.5) circle (43.75cm);
+      \end{scope}
+      \draw (2.9,7.2) node {\includegraphics[height=1.1cm]{uulogo}};
+      \draw (9.8,7.35) node {\parbox[b]{5cm}{\scriptsize\cslogo}};
+    \end{tikzpicture}}
+  \setbeamertemplate{navigation symbols}{}}
+
+\newcommand{\mainmatter}{%
+  \setbeamertemplate{background}{%
+    \begin{tikzpicture}{0mm}{0mm}
+      \clip (0,0) rectangle (12.8,9.6);
+      \fill [uuxsilver!50!white] (0,0) rectangle (12.8,9.6);    
+      \fill [uuxsilver!20!white] (30,6.5) circle (28.9cm);
+      \draw (2.8,0.6) node {\includegraphics[height=0.8cm]{uulogo}};
+      \draw (10.3,0.7) node {\parbox[b]{4cm}{\tiny\cslogo}};
+      \draw (0.5,0.25) node {\tiny\insertframenumber};
+    \end{tikzpicture}}
+  \setbeamertemplate{navigation symbols}{%
+    \insertslidenavigationsymbol%
+    \insertframenavigationsymbol%
+    \insertsubsectionnavigationsymbol%
+    \insertsectionnavigationsymbol%
+    \insertdocnavigationsymbol%
+    \insertbackfindforwardnavigationsymbol%
+    \hspace{0.35cm}}}
+
+\mainmatter
+
+\setbeamersize{text margin left=2cm}
+\setbeamersize{text margin right=.5cm}
+
+\newcommand{\cslogo}{%
+  \raggedleft 
+  \sffamily
+  \textcolor{uuxred}{\textbf{[}}%
+  Faculty of \textbf{Science}\\
+  \textcolor{uuxred}{\textbf{Information and Computing Sciences}}%
+  \textcolor{uuxred}{\textbf{]}}}
+
+\setbeamertemplate{head}{}
+\setbeamertemplate{foot}{}
+\setbeamertemplate{navigation symbols}{}
+
+\renewcommand{\sfdefault}{cmss}
+\renewcommand{\ttdefault}{cmtt}
+
+\renewcommand{\emph}[1]{\textcolor{uuxred}{#1}}
+
+\usefonttheme[onlymath]{serif}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% inner theme
+
+\setlength{\parskip}{0.25cm}
+
+\setbeamerfont{title}{series=\bfseries,size=\Large}
+
+\setbeamertemplate{title page}{%
+  \vspace{2.5cm}
+  \begin{center}
+    {\usebeamerfont{title}\textcolor{uuxred}{\inserttitle}}
+
+    \large
+    \insertauthor
+
+    \footnotesize
+    \insertinstitute
+
+    \small
+    \insertdate
+
+    \vfill
+  \end{center}}
+
+\newcommand{\sectionnumber}{}
+
+\setbeamercolor{frametitle}{fg=uuxred}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamertemplate{frametitle}{%
+  \vspace{0.25cm}%
+  \hspace{-1.5cm}%
+  \usebeamerfont{frametitle}\usebeamercolor{frametitle}\insertframetitle%
+  \normalfont\normalsize\hfill\sectionnumber}
+
+\newcommand{\sectionpage}{%
+  \hspace{-1cm}%
+  \parbox{11.3cm}{%
+    \begin{center}
+      \usebeamerfont{frametitle}%
+      \usebeamercolor[fg]{frametitle}%
+      \thesection.\ \,\insertsection%
+    \end{center}}}
+
+\newcommand{\sectionpagestar}{%
+  \hspace{-1cm}%
+  \parbox{11.3cm}{%
+    \begin{center}
+      \usebeamerfont{frametitle}%
+      \usebeamercolor[fg]{frametitle}%
+      \insertsection%
+    \end{center}}}
+
+\AtBeginSection%
+  [\begin{frame}\sectionpagestar\end{frame}\renewcommand{\sectionnumber}{}]%
+  {\begin{frame}\sectionpage\end{frame}%
+   \renewcommand{\sectionnumber}{\S\thesection}}
+
+\newcommand{\subsectionpage}{%
+  \hspace{-1cm}%
+  \parbox{11.3cm}{%
+    \begin{center}
+      \usebeamerfont{frametitle}%
+      \usebeamercolor[fg]{frametitle}%
+      \thesection.\thesubsection\ \,\insertsubsection%
+    \end{center}}}
+
+\newcommand{\subsectionpagestar}{%
+  \hspace{-1cm}%
+  \parbox{11.3cm}{%
+    \begin{center}
+      \usebeamerfont{frametitle}%
+      \usebeamercolor[fg]{frametitle}%
+      \insertsubsection%
+    \end{center}}}
+
+\AtBeginSubsection%
+  [\begin{frame}\subsectionpagestar\end{frame}%
+   \renewcommand{\sectionnumber}{}]%
+  {\begin{frame}\subsectionpage\end{frame}%
+   \renewcommand{\sectionnumber}{\S\thesection.\thesubsection}}
